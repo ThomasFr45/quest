@@ -59,7 +59,6 @@ moviesRouter.put('/:id', (req, res) => {
 });
 
 moviesRouter.delete('/:id', (req, res) => {
-  az
   const movieId = req.params.id;
   Movie.removeOne(movieId).then(result => {
     if (result[0].affectedRows > 0) res.status(200).send('🎉 Movie deleted!');
