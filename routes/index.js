@@ -5,13 +5,9 @@ const usersRouter = require('./users');
 const setupRoutes = (app) => {
   app.use('/api/movies', moviesRouter);
   app.use('/api/users', usersRouter);
-  // TODO later : app.use('/api/users', usersRouter);
-
 };
 
 
 module.exports = {
-
   setupRoutes,
-
 };

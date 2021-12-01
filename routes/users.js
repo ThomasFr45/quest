@@ -1,9 +1,6 @@
-// Create the router object that will manage all operations on movies
 const usersRouter = require('express').Router();
-// Import the movie model that we'll need in controller functions
 const Users = require('../models/user');
 
-// GET /api/movies/
 usersRouter.get('/', (req, res) => {
   Users.findMany()
     .then((movies) => {
@@ -15,8 +12,6 @@ usersRouter.get('/', (req, res) => {
     });
 });
 
-
-// TODO : GET /api/movies/:id
 
 usersRouter.get('/:id', (req, res) => {
   const  id  = req.params;
@@ -43,6 +38,7 @@ usersRouter.post('/', (req, res) => {
     })
 });
 
+
 usersRouter.put('/:id', (req, res) => {
   const userId = req.params.id;
   let existingMovie = null;
@@ -60,6 +56,7 @@ usersRouter.put('/:id', (req, res) => {
     });
 });
 
+
 usersRouter.delete('/:id', (req, res) => {
   const userId = req.params.id;
   Users.removeOne(userId).then(result => {
@@ -67,4 +64,5 @@ usersRouter.delete('/:id', (req, res) => {
     else res.status(404).send('User not found');
   })
 });
+
 module.exports = usersRouter;

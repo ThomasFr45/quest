@@ -1,9 +1,6 @@
-// Create the router object that will manage all operations on movies
 const moviesRouter = require('express').Router();
-// Import the movie model that we'll need in controller functions
 const Movie = require('../models/movie');
 
-// GET /api/movies/
 moviesRouter.get('/', (req, res) => {
   const { max_duration, color } = req.query;
   Movie.findMany({ filters: { max_duration, color } })
@@ -16,8 +13,6 @@ moviesRouter.get('/', (req, res) => {
     });
 });
 
-
-// TODO : GET /api/movies/:id
 
 moviesRouter.get('/:id', (req, res) => {
   const  id  = req.params;
@@ -59,7 +54,6 @@ moviesRouter.put('/:id', (req, res) => {
 });
 
 moviesRouter.delete('/:id', (req, res) => {
-  console.log("id",req.params.id)
   const movieId = req.params.id;
   Movie.removeOne(movieId).then(result => {
     if (result[0].affectedRows > 0) res.status(200).send('🎉 Movie deleted!');
